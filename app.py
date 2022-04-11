@@ -1,5 +1,5 @@
 """Flask app for Cupcakes"""
-from flask import Flask, request, render_template, flash, jsonify
+from flask import Flask, request, render_template, jsonify
 from models import db, connect_db, Cupcake
 
 app = Flask(__name__)
@@ -43,7 +43,6 @@ def add_cupcake():
         )
     db.session.add(cupcake)
     db.session.commit()
-    flash("Successfully added new cupcake!")
     return (jsonify(cupcake = cupcake.serialize_cupcake()), 201)
 
 
@@ -66,6 +65,5 @@ def delete_cupcake(cupcake_id):
     cupcake = Cupcake.query.get_or_404(cupcake_id)
     db.session.delete(cupcake)
     db.session.commit()
-    flash("Successfully deleted cupcake!")
     return jsonify(message="Deleted")
 
