@@ -1,0 +1,23 @@
+body {background-color: rgb(253, 207, 255);}
+
+.card-text {
+    text-transform: capitalize;
+}
+
+h3 {
+    margin: 3rem;
+    background-color: rgb(252, 158, 255);
+    border: 2px solid purple;
+    border-radius: 10px;
+    padding: 10px;
+    color: rgb(73, 0, 73);
+}
+
+#new-cupcake {
+    margin-bottom: 3rem;
+    border: 2px solid purple;
+}
+
+.card {
+    border: 2px solid purple;
+}
