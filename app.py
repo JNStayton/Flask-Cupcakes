@@ -24,6 +24,15 @@ def get_cupcakes():
     return jsonify(cupcakes=serialized)
 
 
+@app.route('/api/cupcakes/find', methods=['POST'])
+def search_cupcakes():
+    data = request.json
+    search_term = data['searchTerm']
+    search_results = Cupcake.query.filter((Cupcake.flavor.ilike(f'%{search_term}%')) | (Cupcake.size.ilike(f'%{search_term}%')) | (Cupcake.rating.ilike(f'%{search_term}%'))).all()
+    cupcakes = [c.serialize_cupcake() for c in search_results]
+    return jsonify(cupcakes=cupcakes)
+
+
 @app.route('/api/cupcakes/<int:cupcake_id>')
 def show_cupcake(cupcake_id):
     """Get data about a single cupcake"""

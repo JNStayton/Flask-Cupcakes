@@ -1,7 +1,6 @@
 let $container = $('#cupcakes-container');
 
 showCupcakes();
-
 // data-id $(this).data('id')
 
 // $('#').click(function(){
@@ -22,6 +21,10 @@ function makeCupcakeHTML(cupcake) {
 `;
 }
 
+function badSearch(searchTerm) {
+	return `<p>We're sorry, but we don't have any ${searchTerm} cupcakes!</p>`;
+}
+
 async function showCupcakes() {
 	let resp = await axios.get('/api/cupcakes');
 	let cupcakes = resp.data.cupcakes;
@@ -29,6 +32,25 @@ async function showCupcakes() {
 		$container.append(makeCupcakeHTML(cupcake));
 	}
 }
+
+async function searchCupcakes(searchTerm) {
+	let resp = await axios.post('/api/cupcakes/find', (json = { searchTerm }));
+	let cupcakes = resp.data.cupcakes;
+	if (cupcakes.length > 0) {
+		for (let cupcake of cupcakes) {
+			$container.append(makeCupcakeHTML(cupcake));
+		}
+	} else {
+		$container.append(badSearch(searchTerm));
+	}
+}
+
+$('#search-form').on('submit', async function(evt) {
+	evt.preventDefault();
+	let searchTerm = $('#search').val();
+	$container.empty();
+	searchCupcakes(searchTerm);
+});
 
 $('#new-cupcake').on('submit', async function(evt) {
 	evt.preventDefault();
