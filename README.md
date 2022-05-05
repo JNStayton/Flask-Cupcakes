@@ -17,12 +17,11 @@ If you would like to start the program with prepopulated data to play around wit
 1. `%run seed.py` to run the seed file and fill the database with dummy data
 
 ### Playing with the App:
-**Basic Schema:**
-Each Cupcake in the database has:
-- A flavor
-- A rating
-- A size (Small, Medium, Large)
-- An image URL
+**Basic Cupcake Schema:**
+- Flavor
+- Rating
+- Size (Small, Medium, Large)
+- Image (URL)
 
 **Basic Functionality:**
 1. Clicking 'Cupcake World' in the navbar will redirect you to the home page
