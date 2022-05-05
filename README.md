@@ -1,82 +1,35 @@
-In this exercise, you will build a JSON API, test it using Insomnia, write integration tests, and build a HTML/JS frontend.
+## Cupcake World!
+_This program is a basic CRUD app centered around CUPCAKES! The app uses **Python** and **Flask** server-side, has basic API endpoints centered around the CRUD functionality, and manipulates the DOM with **AJAX requests** to the API using **Jquery** and **JS**. The frontend is lightly styled with **Bootstrap** and a **styles.css** file in the **/static** folder. The app also uses **PostGreSQL**, and needs a database named `cupcakes` to run correctly._
 
-## Part Zero: Set Up
-Make a virtual environment and install the dependencies.
+### Requirements and Dependencies:
+This app uses PostgreSQL and connects to a database named `cupcakes`. Be sure to create this database:
+```
+sql
+CREATE DATABASE cupcakes
+```
+Run the following commands in the terminal to run the app:
+1. `python3 -m venv venv` to create a virtual environment
+2. 3. `source venv/bin/activate` to activate the virtual environment
+3. `pip3 install -r requirements.txt` to install the current dependencies within the venv
+4. `flask run` to start the flask server and run the program
 
-Make your project a Git repo.
+If you would like to start the program with prepopulated data to play around with, please run the following command in ipython:
 
-## Part One: Cupcake Model
-Create Cupcake model in models.py.
+1. `%run seed.py` to run the seed file and fill the database with dummy data
 
-It should have the following columns:
+### Playing with the App:
+Each Cupcake in the database has:
+    - A flavor
+    - A rating
+    - A size (Small, Medium, Large)
+    - An image URL
+  
+1. Clicking 'Cupcake World' in the navbar will redirect you to the home page
+2. Clicking 'Add Cupcake' in the navbar will bring you down to the Add Cupcake Form at the bottom of the page
+3. The search bar will return query results for cupcakes loosely matching the search term provided either by flavor, rating, or size.
+4. You can delete any cupcake from the database, or view the cupcakes main page to edit its information.
 
- 1. id: a unique primary key that is an auto-incrementing integer
- 2. flavor: a not-nullable text column
- 3. size: a not-nullable text column
- 4. rating: a not-nullable column that is a float
- 5. image: a non-nullable text column. If an image is not given, default to https://tinyurl.com/demo-cupcake
+### Tests
+_This app is tested using **unittest**. Each API endpoint's functionality is tested, as well as the routes rendering html templates._
 
-Make a database called _cupcakes._
-
-Once you’ve made this, you can run our _seed.py_ file to add a few sample cupcakes to your database.
-
-## Part Two: Listing, Getting & Creating Cupcakes
-Make routes for the following:
-
-#### GET /api/cupcakes
-Get data about all cupcakes.
-
-Respond with JSON like: **{cupcakes: [{id, flavor, size, rating, image}, ...]}.**
-
-The values should come from each cupcake instance.
-
-#### GET /api/cupcakes/[cupcake-id]
-Get data about a single cupcake.
-
-Respond with JSON like: **{cupcake: {id, flavor, size, rating, image}}.**
-
-This should raise a 404 if the cupcake cannot be found.
-
-#### POST /api/cupcakes
-Create a cupcake with flavor, size, rating and image data from the body of the request.
-
-Respond with JSON like: **{cupcake: {id, flavor, size, rating, image}}.**
-
-Test that these routes work in Insomnia.
-
-We’ve provided tests for these three routes; these test should pass if the routes work properly.
-
->> You can run our tests like: **(venv) $ python -m unittest -v tests**
-
-
-## Part Three: Update & Delete Cupcakes
-Make routes for the following:
-
-#### PATCH /api/cupcakes/[cupcake-id]
-Update a cupcake with the id passed in the URL and flavor, size, rating and image data from the body of the request. You can always assume that the entire cupcake object will be passed to the backend.
-
-This should raise a 404 if the cupcake cannot be found.
-
-Respond with JSON of the newly-updated cupcake, like this: **{cupcake: {id, flavor, size, rating, image}}.**
-
-#### DELETE /api/cupcakes/[cupcake-id]
-This should raise a 404 if the cupcake cannot be found.
-
-Delete cupcake with the id passed in the URL. Respond with JSON like **{message: "Deleted"}.**
-
-Test these routes in Insomnia.
-
-## Part Four: Write More Tests
-Add tests for the PATCH and DELETE routes.
-
-## Part Five: Start on the frontend
-Make this route:
-
-#### GET /
-This should return an HTML page (via render_template). This page should be entirely static (the route should just render the template, without providing any information on cupcakes in the database). It should show simply have an empty list where cupcakes should appear and a form where new cupcakes can be added.
-
-Write Javascript _(using axios and jQuery)_ that:
-
-1. queries the API to get the cupcakes and adds to the page
-2. handles form submission to both let the API know about the new cupcake and updates the list on the page to show it
-_(You do not need to use WTForms to make this form; this is a possibility in the further study.)_
+**tests.py** connects to a database named `cupcakes_test`. Be sure to create this database before running the tests file.
