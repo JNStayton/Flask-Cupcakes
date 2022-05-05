@@ -17,12 +17,14 @@ If you would like to start the program with prepopulated data to play around wit
 1. `%run seed.py` to run the seed file and fill the database with dummy data
 
 ### Playing with the App:
+**Basic Schema:**
 Each Cupcake in the database has:
 - A flavor
 - A rating
 - A size (Small, Medium, Large)
 - An image URL
-  
+
+**Basic Functionality:**
 1. Clicking 'Cupcake World' in the navbar will redirect you to the home page
 2. Clicking 'Add Cupcake' in the navbar will bring you down to the Add Cupcake Form at the bottom of the page
 3. The search bar will return query results for cupcakes loosely matching the search term provided either by flavor, rating, or size.
