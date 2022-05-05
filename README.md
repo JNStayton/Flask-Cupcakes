@@ -3,13 +3,12 @@ _This program is a basic CRUD app centered around CUPCAKES! The app uses **Pytho
 
 ### Requirements and Dependencies:
 This app uses PostgreSQL and connects to a database named `cupcakes`. Be sure to create this database:
-```
-sql
+```sql
 CREATE DATABASE cupcakes
 ```
 Run the following commands in the terminal to run the app:
 1. `python3 -m venv venv` to create a virtual environment
-2. 3. `source venv/bin/activate` to activate the virtual environment
+2. `source venv/bin/activate` to activate the virtual environment
 3. `pip3 install -r requirements.txt` to install the current dependencies within the venv
 4. `flask run` to start the flask server and run the program
 
@@ -19,17 +18,17 @@ If you would like to start the program with prepopulated data to play around wit
 
 ### Playing with the App:
 Each Cupcake in the database has:
-    - A flavor
-    - A rating
-    - A size (Small, Medium, Large)
-    - An image URL
+- A flavor
+- A rating
+- A size (Small, Medium, Large)
+- An image URL
   
 1. Clicking 'Cupcake World' in the navbar will redirect you to the home page
 2. Clicking 'Add Cupcake' in the navbar will bring you down to the Add Cupcake Form at the bottom of the page
 3. The search bar will return query results for cupcakes loosely matching the search term provided either by flavor, rating, or size.
 4. You can delete any cupcake from the database, or view the cupcakes main page to edit its information.
 
-### Tests
+### Tests:
 _This app is tested using **unittest**. Each API endpoint's functionality is tested, as well as the routes rendering html templates._
 
 **tests.py** connects to a database named `cupcakes_test`. Be sure to create this database before running the tests file.
