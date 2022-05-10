@@ -13,7 +13,9 @@ db.create_all()
 
 
 ###################################################################################################
-# These two routes render the templates for 1) the HOME page to display ALL cupcakes, 2) the SHOW page to display information and the edit form for a SINGLE cupcake
+# These two routes render the templates for... 
+# 1) the HOME page to display ALL cupcakes, 
+# 2) the SHOW page to display information and the edit form for a SINGLE cupcake
 ###################################################################################################
 
 @app.route('/')
@@ -47,7 +49,9 @@ def search_cupcakes():
     This route will return JSON results that closely match either the FLAVOR, SIZE, or RATING of the search term"""
     data = request.json
     search_term = data['searchTerm']
-    search_results = Cupcake.query.filter((Cupcake.flavor.ilike(f'%{search_term}%')) | (Cupcake.size.ilike(f'%{search_term}%')) | (Cupcake.rating.ilike(f'%{search_term}%'))).all()
+    search_results = Cupcake.query.filter((Cupcake.flavor.ilike(f'%{search_term}%')) 
+        | (Cupcake.size.ilike(f'%{search_term}%')) 
+        | (Cupcake.rating.ilike(f'%{search_term}%'))).all()
     cupcakes = [c.serialize_cupcake() for c in search_results]
     return jsonify(cupcakes=cupcakes)
 

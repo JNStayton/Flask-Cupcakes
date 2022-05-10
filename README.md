@@ -1,4 +1,6 @@
 ## Cupcake World!
+_This exercise is part of the Springboard Software Engineering Bootcamp curriculum, from **Unit 24: Intermediate Flask**, which focused on generating JSON APIs through flask._
+
 _This program is a basic CRUD app centered around CUPCAKES! The app uses **Python** and **Flask** server-side, has basic API endpoints centered around the CRUD functionality, and manipulates the DOM with **AJAX requests** to the API using **Jquery** and **JS**. The frontend is lightly styled with **Bootstrap** and a **styles.css** file in the **/static** folder. The app also uses **PostGreSQL**, and needs a database named `cupcakes` to run correctly._
 
 ### Requirements and Dependencies:
